@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!--  CSS CODE -->
+<style>
+    
+    body{
+        background-color: #212121;
+        text-align:center;
+    }
+    #start{
+        background-color: beige;
+        padding:20px;
+        display: inline-block;
+        margin:10px;
+        border-radius: 25%;
+        
+    }
+    #start:hover{
+        background-color: red;
+    }
+    #stop:hover{
+        background-color: green;
+    }
+    #stop{
+        background-color: beige;
+        padding:20px;
+        display: inline-block;
+        margin:10px;
+        border-radius: 25%;
+    }
+</style>
+<body>
+
+    
+    <!--HTML CODE-->
+    <h1 style="color:cadetblue">UNLIMITED COLOR CHANGER</h1>
+    <buttun id = "start">start</buttun>
+    <buttun id = "stop">stop</buttun>
+
+<!--  JAVAsCRIPT CODE   -->
+    <script>
+        const store = document.getElementById('start');
+        const store1= document.getElementById('stop');
+        let Colors;
+
+        const randomColor=function(){
+            const hex='0123456789ABCDEF';
+            let color='#';
+            for(let i=0;i<6;i++){
+                color+=hex[Math.floor(Math.random()*16)];
+            }
+            return color;
+        }
+        let interval;
+        const start=function(){
+        function changeColor(){
+            document.body.style.backgroundColor=randomColor();
+        }
+        if(!interval) interval=setInterval(changeColor,1000);
+        };
+        const stop = function(){
+            clearInterval(interval);
+            interval=null; 
+            
+        };
+        document.querySelector('#start').addEventListener('click',start);
+        document.querySelector('#stop').addEventListener('click',stop);
+    </script>
+    
+</body>
+</html>
